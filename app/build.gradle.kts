@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -48,16 +49,16 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.retrofit)
-    implementation(libs.converter.kotlinx.serialization)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.retrofit.converter.kotlinx)
     implementation(libs.coil3.coil.compose)
-    implementation(libs.coil.network.okhttp)
-    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.coil3.coil.network.okhttp)
+    implementation(libs.navigation.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.kotlinx.datetime)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    testImplementation(libs.androidx.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
