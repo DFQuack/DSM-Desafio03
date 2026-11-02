@@ -1,6 +1,6 @@
 package sv.edu.udb.dsm_desafio03.data.model
 
-import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 
 data class Resource(
     val id: String,
@@ -12,7 +12,7 @@ data class Resource(
     val url: String,
     val imageUrl: String,
     val isFavorite: Boolean,
-    val rating: Int, // Average of all users
-    val createdAt: LocalDate,
-    val lastModified: LocalDate
+    val rating: Int,
+    val createdAt: LocalDateTime,
+    val lastModified: LocalDateTime
 )

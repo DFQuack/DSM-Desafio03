@@ -32,7 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import sv.edu.udb.dsm_desafio03.R
 import sv.edu.udb.dsm_desafio03.core.ui.theme.DSMDesafio03Theme
 import sv.edu.udb.dsm_desafio03.data.model.Resource
@@ -129,7 +129,8 @@ val sampleResource = Resource(
     id = "1", title = "A book", type = "Book", author = "Me", code = null,
     description = "This is a nice book. This is very true. I am not lying.",
     url = "https://books.org/1", imageUrl = "", isFavorite = false, rating = 3,
-    createdAt = LocalDate(2025, 1, 1), lastModified = LocalDate(2025, 1, 2)
+    createdAt = LocalDateTime(2025, 1, 1, 17, 24, 0),
+    lastModified = LocalDateTime(2025, 1, 2, 18, 25, 59)
 )
 
 @Preview(name = "Light")
