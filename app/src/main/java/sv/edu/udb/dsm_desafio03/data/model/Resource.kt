@@ -3,7 +3,7 @@ package sv.edu.udb.dsm_desafio03.data.model
 import kotlinx.datetime.LocalDate
 
 data class Resource(
-    val id: String?,
+    val id: String,
     val title: String,
     val type: String,
     val author: String,

@@ -18,11 +18,23 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import sv.edu.udb.dsm_desafio03.R
+import sv.edu.udb.dsm_desafio03.core.ui.components.ResourceList
 import sv.edu.udb.dsm_desafio03.core.ui.components.SearchBar
+import sv.edu.udb.dsm_desafio03.core.ui.components.sampleResource
 import sv.edu.udb.dsm_desafio03.core.ui.theme.DSMDesafio03Theme
+import sv.edu.udb.dsm_desafio03.data.model.Resource
 
 @Composable
-fun ResourceContent() {
+fun ResourceContent(
+    uiState: ResourceUiState,
+    onQueryChange: (String) -> Unit,
+    onResourceClick: (Resource) -> Unit,
+    onFavoriteClick: (Resource) -> Unit,
+    onRatingChange: (Resource, Int) -> Unit,
+    onEditClick: (Resource) -> Unit,
+    onDeleteConfirmed: (Resource) -> Unit,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
@@ -37,12 +49,17 @@ fun ResourceContent() {
             color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            // Display ItemResource() as items
-        }
+        ResourceList(
+            resources = uiState.resources,
+            onResourceClick = onResourceClick,
+            onFavoriteClick = onFavoriteClick,
+            onRatingChange = onRatingChange,
+            onEditClick = onEditClick,
+            onDeleteConfirmed = onDeleteConfirmed,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(4.dp)
+        )
     }
 }
 
@@ -50,5 +67,11 @@ fun ResourceContent() {
 @Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun ResourceContentPreview() {
-    DSMDesafio03Theme{ ResourceContent() }
+    DSMDesafio03Theme {
+        ResourceContent(
+            uiState = ResourceUiState(resources = listOf(sampleResource, sampleResource.copy(id = "2"))),
+            onQueryChange = {}, onResourceClick = {}, onFavoriteClick = {},
+            onRatingChange = { _, _ -> }, onEditClick = {}, onDeleteConfirmed = {}
+        )
+    }
 }
