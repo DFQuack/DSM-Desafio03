@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">DSM-Desafio03</string>
+    <string name="action_more">More</string>
+    <string name="search_hint">Search…</string>
+    <string name="icon_description_search">Search icon</string>
+    <string name="icon_description_image">Image placeholder</string>
+    <string name="icon_description_like">Add to favorites</string>
+    <string name="icon_description_delete">Delete resource</string>
+    <string name="resource_type_book">Book</string>
+    <string name="resource_type_video">Video</string>
+    <string name="resource_type_paper">Academic paper</string>
+    <string name="resource_type_article">Article</string>
+    <string name="resource_type_tutorial">Tutorial</string>
+    <string name="resources_title">New resources</string>
+    <string name="icon_description_rate_star">Rate this resource</string>
+    <string name="icon_description_edit">Edit resource</string>
 </resources>
