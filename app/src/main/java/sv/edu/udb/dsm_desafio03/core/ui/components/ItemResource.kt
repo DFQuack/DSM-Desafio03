@@ -63,7 +63,7 @@ fun ItemResource(
                         fontWeight = FontWeight(700),
                     )
                     Text(
-                        text = "$resource.type · $resource.author",
+                        text = "${resource.type} · ${resource.author}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -91,17 +91,19 @@ fun ItemResource(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                IconToggleButton(
-                    checked = resource.isFavorite,
-                    onCheckedChange = { onFavoriteClick() }
-                ) {
-                    Icon(
-                        imageVector = if (resource.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = stringResource(R.string.icon_description_like),
-                        tint = MaterialTheme.colorScheme.outline
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    IconToggleButton(
+                        checked = resource.isFavorite,
+                        onCheckedChange = { onFavoriteClick() }
+                    ) {
+                        Icon(
+                            imageVector = if (resource.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            contentDescription = stringResource(R.string.icon_description_like),
+                            tint = MaterialTheme.colorScheme.outline
+                        )
+                    }
+                    RatingBar(rating = resource.rating, onRatingChange)
                 }
-                RatingBar(rating = resource.rating, onRatingChange)
                 Row {
                     IconButton(onClick = onEditClick) {
                         Icon(
