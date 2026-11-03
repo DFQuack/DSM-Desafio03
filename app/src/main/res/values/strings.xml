@@ -21,4 +21,14 @@
     <string name="icon_description_add">Add resource</string>
     <string name="nav_resources">Resources</string>
     <string name="error_message_generic">Something went wrong...</string>
+    <string name="form_edit_title">Edit resource</string>
+    <string name="form_add_title">Add resource</string>
+    <string name="save">Save</string>
+    <string name="field_title">Title</string>
+    <string name="field_type">Resource type</string>
+    <string name="field_author">Author</string>
+    <string name="field_code">Code (ISBN/DOI)</string>
+    <string name="field_url">Resource URL</string>
+    <string name="field_image_url">Image URL</string>
+    <string name="field_description">Description</string>
 </resources>
