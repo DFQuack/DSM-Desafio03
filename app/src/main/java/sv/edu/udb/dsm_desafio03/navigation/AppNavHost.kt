@@ -3,6 +3,7 @@ package sv.edu.udb.dsm_desafio03.navigation
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -20,11 +21,13 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import sv.edu.udb.dsm_desafio03.R
+import sv.edu.udb.dsm_desafio03.feature.account.AccountScreen
 import sv.edu.udb.dsm_desafio03.feature.form.ResourceFormScreen
 import sv.edu.udb.dsm_desafio03.feature.resources.ResourceScreen
 
 object Routes {
     const val RESOURCES = "resources"
+    const val ACCOUNT = "account"
     const val FORM = "form?resourceId={resourceId}"
     // If the resource id is passed, the form is in Edit mode. Otherwise, it's in Create mode.
     fun form(id: String? = null) = if (id == null) "form" else "form?resourceId=$id"
@@ -34,7 +37,8 @@ object Routes {
 fun AppNavHost() {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
-    val showBottomBar = currentRoute == Routes.RESOURCES
+    // No bottom bar on form screen
+    val showBottomBar = currentRoute == Routes.RESOURCES || currentRoute == Routes.ACCOUNT
 
     Scaffold(
         bottomBar = {
@@ -45,6 +49,12 @@ fun AppNavHost() {
                         onClick = { navController.navigateToTab(Routes.RESOURCES) },
                         icon = { Icon(Icons.Default.Home, null) },
                         label = { Text(stringResource(R.string.nav_resources)) }
+                    )
+                    NavigationBarItem(
+                        selected = currentRoute == Routes.ACCOUNT,
+                        onClick = { navController.navigateToTab(Routes.ACCOUNT) },
+                        icon = { Icon(Icons.Default.Person, null) },
+                        label = { Text(stringResource(R.string.nav_account)) }
                     )
                 }
             }
@@ -60,6 +70,9 @@ fun AppNavHost() {
                     onAddClick = { navController.navigate(Routes.form()) },
                     onEditClick = { id -> navController.navigate(Routes.form(id)) }
                 )
+            }
+            composable(Routes.ACCOUNT) {
+                AccountScreen(onEditClick = { id -> navController.navigate(Routes.form(id)) })
             }
             composable(
                 route = Routes.FORM,

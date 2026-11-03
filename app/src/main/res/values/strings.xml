@@ -31,4 +31,7 @@
     <string name="field_url">Resource URL</string>
     <string name="field_image_url">Image URL</string>
     <string name="field_description">Description</string>
+    <string name="account_favorites_title">Your favorites</string>
+    <string name="account_no_favorites">You have no favorites...</string>
+    <string name="nav_account">Account</string>
 </resources>
