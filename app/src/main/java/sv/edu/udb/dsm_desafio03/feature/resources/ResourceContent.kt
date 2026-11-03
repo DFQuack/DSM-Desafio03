@@ -39,7 +39,7 @@ fun ResourceContent(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface)
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(8.dp, 0.dp)
     ) {
         SearchBar(onQueryChange = onQueryChange)
         Spacer(modifier = Modifier.height(8.dp))
@@ -61,7 +61,7 @@ fun ResourceContent(
             onDeleteConfirmed = onDeleteConfirmed,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(4.dp)
+                .padding(0.dp, 8.dp)
         )
     }
 }

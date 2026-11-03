@@ -99,7 +99,7 @@ fun ItemResource(
                         Icon(
                             imageVector = if (resource.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                             contentDescription = stringResource(R.string.icon_description_like),
-                            tint = MaterialTheme.colorScheme.outline
+                            tint = if (resource.isFavorite) MaterialTheme.colorScheme.secondary else MaterialTheme.colorScheme.outline
                         )
                     }
                     RatingBar(rating = resource.rating, onRatingChange)
