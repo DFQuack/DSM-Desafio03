@@ -26,7 +26,10 @@ object NetworkModule {
     */
     @Provides @Singleton
     fun provideResourceApi(): ResourceApi {
-        val json = Json { ignoreUnknownKeys = true }
+        val json = Json {
+            ignoreUnknownKeys = true
+            encodeDefaults = true
+        }
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
