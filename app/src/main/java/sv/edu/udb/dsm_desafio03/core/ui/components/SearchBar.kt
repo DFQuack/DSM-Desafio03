@@ -11,18 +11,34 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import kotlinx.coroutines.flow.debounce
 import sv.edu.udb.dsm_desafio03.R
 
 @Composable
-fun SearchBar() {
-    val state = rememberTextFieldState()
+fun SearchBar(
+    onQueryChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+    ) {
+    val textState = rememberTextFieldState()
+    val currentOnQueryChange by rememberUpdatedState(onQueryChange)
+
+    // Every edit emits the new text as an update
+    LaunchedEffect(textState) {
+        snapshotFlow { textState.text.toString() }
+            .collect { currentOnQueryChange(it) }
+    }
+
     Row(
         modifier = Modifier.fillMaxWidth()
     ) {
         OutlinedTextField(
-            state = state,
+            state = textState,
             trailingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
